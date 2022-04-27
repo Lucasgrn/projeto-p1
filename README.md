@@ -12,6 +12,10 @@
 ## Ferramentas utilizadas:
 
 ## Divisão do trabalho:
+ - Movimentação: Lucas G.
+ - Colisão:
+ - Items:
+ - Inimigos: 
 
 ## Conceitos utilizados:
 
