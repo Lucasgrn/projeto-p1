@@ -2,7 +2,7 @@
 ## Membros da Equipe:
  - Igor Dário ()
  - João Felipe (jfbs)
- - João Hibernon ()
+ - João Hibernon (jhclal)
  - Lucas Rocha (lgrn)
  - Pauline Vitória (pvad)
  - Renan Martiniano (rmsl3)
