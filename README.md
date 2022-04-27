@@ -1,6 +1,6 @@
 # Projeto P1
 ## Membros da Equipe:
- - Igor Dário ()
+ - Igor Dário (idbs)
  - João Felipe (jfbs)
  - João Hibernon (jhclal)
  - Lucas Rocha (lgrn)
