@@ -22,3 +22,12 @@ class Player(pygame.sprite.Sprite):
 
         elif keys[pygame.K_d]:
             self.rect.x += 5
+
+        if self.rect.top < 0:
+            self.rect.top = 0
+        elif self.rect.bottom > 720:
+            self.rect.bottom = 720
+        elif self.rect.left < 0:
+            self.rect.left = 0
+        elif self.rect.right > 1280:
+            self.rect.right = 1280
