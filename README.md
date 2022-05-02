@@ -14,8 +14,8 @@
 ## Divisão do trabalho:
  - Movimentação: Lucas G.
  - Colisão:
- - Items:
- - Inimigos: 
+ - Items: Renan
+ - Inimigos: Pauline V.
 
 ## Conceitos utilizados:
 
