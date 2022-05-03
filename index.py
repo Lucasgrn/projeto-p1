@@ -1,5 +1,6 @@
 import pygame
 from player import Player
+#from enemy import Enemy
 pygame.init()
 
 display = pygame.display.set_mode([1280, 720]) #Tamanho da janela
@@ -17,7 +18,7 @@ gameloop = True
 clock = pygame.time.Clock()
 
 while gameloop:
-    clock.tick(60   )
+    clock.tick(60) #Limitando a 60 FPS
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameloop = False
