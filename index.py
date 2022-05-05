@@ -2,8 +2,7 @@ import random
 import pygame
 from bullet import BulletDown, BulletRight, BulletUp
 from player import Player
-from enemy import Enemy
-#from bullet import Bullet
+from enemy import EnemyToLeft, EnemyToUp, EnemyToDown
 pygame.init()
 
 display = pygame.display.set_mode([1280, 720]) #Tamanho da janela
@@ -44,8 +43,12 @@ while gameloop:
 
     #Gerando Inimigos
     timer += 1
-    if timer == 4:
+    if timer == 15:
         timer = 0
-        newEnemy = Enemy(drawGroup)
+        newEnemyLeft = EnemyToLeft(drawGroup)
+        newEnemyUp = EnemyToUp(drawGroup)
+        newEnemyDown = EnemyToDown(drawGroup)
+        
+
 
     pygame.display.update()

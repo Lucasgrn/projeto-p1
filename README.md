@@ -1,8 +1,8 @@
 # Projeto P1
 ## Membros da Equipe:
- - Igor Dário ()
+ - Igor Dário (idbs)
  - João Felipe (jfbs)
- - João Hibernon ()
+ - João Hibernon (jhclal)
  - Lucas Rocha (lgrn)
  - Pauline Vitória (pvad)
  - Renan Martiniano (rmsl3)
@@ -12,6 +12,10 @@
 ## Ferramentas utilizadas:
 
 ## Divisão do trabalho:
+ - Movimentação: Lucas G.
+ - Colisão:
+ - Items: Renan
+ - Inimigos: Pauline V.
 
 ## Conceitos utilizados:
 
