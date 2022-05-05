@@ -10,7 +10,8 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, *args):
         keys = pygame.key.get_pressed()
-
+        
+        #Movimentação
         if keys[pygame.K_w]:
             self.rect.y -= 5
 
@@ -22,3 +23,13 @@ class Player(pygame.sprite.Sprite):
 
         elif keys[pygame.K_d]:
             self.rect.x += 5
+
+        #Impede player de sair da tela
+        if self.rect.top < 0:
+            self.rect.top = 0
+        elif self.rect.bottom > 720:
+            self.rect.bottom = 720
+        elif self.rect.left < 0:
+            self.rect.left = 0
+        elif self.rect.right > 1280:
+            self.rect.right = 1280
