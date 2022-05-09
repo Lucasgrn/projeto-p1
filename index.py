@@ -69,7 +69,7 @@ while gameloop:
         if random.random() < 0.2:
             newItemB = Item(itemGroup).image = pygame.image.load('assets/blueItem.png')
         elif random.random() < 0.1:    
-            newItemB = Item(itemGroup).image = pygame.image.load('assets/greenItem.png')
+            newItemB = Item(itemGroup).image = pygame.image.load('assets/yellowItem.png')
         elif random.random() < 0.01:
             newItemB = Item(itemGroup).image = pygame.image.load('assets/purpleItem.png')
 
