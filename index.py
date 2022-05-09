@@ -1,8 +1,8 @@
 import random
 import pygame
-from bullet import BulletDown, BulletRight, BulletUp
+from bullet import BulletDown, BulletLeft, BulletRight, BulletUp
 from player import Player
-from enemy import EnemyToLeft, EnemyToUp, EnemyToDown
+from enemy import EnemyToLeft, EnemyToUp, EnemyToDown, EnemyToRight
 pygame.init()
 
 display = pygame.display.set_mode([1280, 720]) #Tamanho da janela
@@ -29,6 +29,9 @@ while gameloop:
             if event.key == pygame.K_RIGHT :
                 newBullet = BulletRight(drawGroup)
                 newBullet.rect.center = player.rect.center
+            elif event.key == pygame.K_LEFT:
+                newBullet = BulletLeft(drawGroup)
+                newBullet.rect.center = player.rect.center
             elif event.key == pygame.K_UP:
                 newBullet = BulletUp(drawGroup)
                 newBullet.rect.center = player.rect.center
@@ -48,6 +51,7 @@ while gameloop:
         newEnemyLeft = EnemyToLeft(drawGroup)
         newEnemyUp = EnemyToUp(drawGroup)
         newEnemyDown = EnemyToDown(drawGroup)
+        newEnemyRight = EnemyToRight(drawGroup)
         
 
 

@@ -18,6 +18,23 @@ class EnemyToLeft(pygame.sprite.Sprite):
             if self.rect.right < 0:
                 self.kill()
 
+class EnemyToRight(pygame.sprite.Sprite):
+    def __init__(self, *groups):
+        super().__init__(*groups)
+
+        self.image = pygame.image.load('assets/enemy.png')
+        self.image = pygame.transform.scale(self.image, [50, 50])
+        self.rect = pygame.Rect(0, 0, 50, 50)
+        self.rect.x = 0 - random.randint(1, 100)
+        self.rect.y = random.randint(1, 700)
+        self.speed = random.randint(4, 6)
+
+    def update(self, *args):
+            #Movimentação
+            self.rect.x += self.speed
+            if self.rect.left > 1280:
+                self.kill()
+
 class EnemyToUp(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
