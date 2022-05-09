@@ -75,10 +75,6 @@ while gameloop:
 
     collects = pygame.sprite.spritecollide(player, itemGroup, True)
 
-    for collect in collects:
-        item += 1
-        print(item)
-
     if collide:
         print('Fim de jogo')
         gameloop = False
