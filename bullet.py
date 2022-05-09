@@ -53,7 +53,7 @@ class BulletDown(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, [10, 10])
         self.rect = self.image.get_rect()
 
-        self.speed = 6
+        self.speed = 10
 
     def update(self, *args):
         self.rect.y += self.speed

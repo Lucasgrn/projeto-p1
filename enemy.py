@@ -10,7 +10,7 @@ class EnemyToLeft(pygame.sprite.Sprite):
         self.rect = pygame.Rect(0, 0, 50, 50)
         self.rect.x = 1280 + random.randint(1, 100)
         self.rect.y = random.randint(1, 700)
-        self.speed = random.randint(4, 6)
+        self.speed = random.randint(2, 4)
 
     def update(self, *args):
             #Movimentação
@@ -27,7 +27,7 @@ class EnemyToRight(pygame.sprite.Sprite):
         self.rect = pygame.Rect(0, 0, 50, 50)
         self.rect.x = 0 - random.randint(1, 100)
         self.rect.y = random.randint(1, 700)
-        self.speed = random.randint(4, 6)
+        self.speed = random.randint(2, 4)
 
     def update(self, *args):
             #Movimentação
@@ -44,7 +44,7 @@ class EnemyToUp(pygame.sprite.Sprite):
         self.rect = pygame.Rect(0, 0, 50, 50)
         self.rect.x = random.randint(1, 1200)
         self.rect.y = 720 + random.randint(1, 100)
-        self.speed = random.randint(4, 6)
+        self.speed = random.randint(2, 4)
 
     def update(self, *args):
             #Movimentação
@@ -61,7 +61,7 @@ class EnemyToDown(pygame.sprite.Sprite):
         self.rect = pygame.Rect(0, 0, 50, 50)
         self.rect.x = random.randint(1, 1200)
         self.rect.y = 0 - random.randint(1, 100)
-        self.speed = random.randint(4, 6)
+        self.speed = random.randint(2, 4)
 
     def update(self, *args):
             #Movimentação
