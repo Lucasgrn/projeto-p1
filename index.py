@@ -12,7 +12,9 @@ pygame.display.set_caption('Wave Slayer') #Nome do jogo (podem mudar!)
 drawGroup = pygame.sprite.Group()
 enemyGroup = pygame.sprite.Group()
 bulletGroup = pygame.sprite.Group()
-itemGroup = pygame.sprite.Group()
+itemBGroup = pygame.sprite.Group()
+itemYGroup = pygame.sprite.Group()
+itemPGroup = pygame.sprite.Group()
 player = Player(drawGroup)
 
 def draw(): #Renderiza os objetos na tela 
@@ -20,11 +22,13 @@ def draw(): #Renderiza os objetos na tela
     drawGroup.draw(display)
     enemyGroup.draw(display)
     bulletGroup.draw(display)
-    itemGroup.draw(display)
+    itemBGroup.draw(display)
+    itemYGroup.draw(display)
+    itemPGroup.draw(display)
     
 
 gameloop = True
-timer = 0
+timer, itemAzul, itemAmarelo, itemRoxo = 0, 0, 0 ,0
 clock = pygame.time.Clock()
 
 while gameloop:
@@ -67,13 +71,25 @@ while gameloop:
 
     if killEnemy:
         if random.random() < 0.2:
-            newItemB = Item(itemGroup).image = pygame.image.load('assets/blueItem.png')
+            newItem = Item(itemBGroup).image = pygame.image.load('assets/blueItem.png')
         elif random.random() < 0.1:    
-            newItemB = Item(itemGroup).image = pygame.image.load('assets/yellowItem.png')
+            newItem = Item(itemYGroup).image = pygame.image.load('assets/yellowItem.png')
         elif random.random() < 0.01:
-            newItemB = Item(itemGroup).image = pygame.image.load('assets/purpleItem.png')
+            newItem = Item(itemPGroup).image = pygame.image.load('assets/purpleItem.png')
+    
+    collectB = pygame.sprite.spritecollide(player, itemBGroup, True)
+    collectY = pygame.sprite.spritecollide(player, itemYGroup, True)
+    collectP = pygame.sprite.spritecollide(player, itemPGroup, True)
 
-    collects = pygame.sprite.spritecollide(player, itemGroup, True)
+    if collectB:
+        itemAzul += 1
+        print(f'Azul: {itemAzul}')
+    if collectY:
+        itemAmarelo += 1
+        print(f'Amarelo: {itemAmarelo}')
+    if collectP:
+        itemRoxo += 1
+        print(f'Roxo: {itemRoxo}')
 
     if collide:
         print('Fim de jogo')
