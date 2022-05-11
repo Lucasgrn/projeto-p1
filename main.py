@@ -1,3 +1,4 @@
+#Imports
 from dis import dis
 import random
 import pygame
@@ -8,38 +9,40 @@ from enemy import EnemyToLeft, EnemyToUp, EnemyToDown, EnemyToRight
 from item import Item
 from menu import Button
 
+#Iniciando e definindo configuração padrão do Pygame
 pygame.init()
-
 display = pygame.display.set_mode([1280, 720]) #Tamanho da janela
 pygame.display.set_caption('Wave Slayer') #Nome do jogo (podem mudar!)
 
-
+#Criando Grupos de Sprites
 drawGroup = pygame.sprite.Group()
 enemyGroup = pygame.sprite.Group()
 bulletGroup = pygame.sprite.Group()
 itemBGroup = pygame.sprite.Group()
 itemYGroup = pygame.sprite.Group()
 itemPGroup = pygame.sprite.Group()
+
+#Chamando Player e definindo o seu grupo
 player = Player(drawGroup)
 
+#Background do menu
 BG = pygame.image.load("assets/Background.png")
 
-#parte dos audios
+#Parte dos audios - Importanto sons e loop da main track
 pygame.mixer.music.set_volume(0.12)
 musica_fundo = pygame.mixer.music.load("assets/opening_theme.wav")
 som_colisao_item = pygame.mixer.Sound("assets/colisao_item.wav")
 som_tiro = pygame.mixer.Sound("assets/tiro.wav")
 som_colisao_inimigo = pygame.mixer.Sound("assets/colisao_inimigo.wav")
 som_gameOver = pygame.mixer.Sound("assets/gameOver.wav")
-
-
-
 pygame.mixer.music.play(-1)
 
+#Importando fonte
 def get_font(size):
     return pygame.font.Font("assets/font.ttf", size)
 
-def draw(): #Renderiza os objetos na tela 
+#Renderiza os objetos na tela
+def draw():  
     display.fill([12, 102, 15])
     drawGroup.draw(display)
     enemyGroup.draw(display)
@@ -48,6 +51,7 @@ def draw(): #Renderiza os objetos na tela
     itemYGroup.draw(display)
     itemPGroup.draw(display)
 
+#Registra, soma e renderiza a pontuação das coletas
 def coletas(itemAzul, itemAmarelo, itemRoxo):
     soma = (itemAzul* 100) + (itemAmarelo * 500) + (itemRoxo * 1000)
     total_ = f"Total: {soma}"
@@ -76,9 +80,6 @@ def coletas(itemAzul, itemAmarelo, itemRoxo):
     total = get_font(25).render(total_, True, "white")
     total_rect = total.get_rect(center=(650, 600))
 
-    '''total_pontos = get_font(25).render(total, True, "White")
-    total_pontos_rect = total_pontos.get_rect(center=(800, 650))'''
-
     display.blit(cor_azul, cor_azul_rect)
     display.blit(cor_amarela, cor_amarela_rect)
     display.blit(cor_roxa, cor_roxa_rect)
@@ -86,9 +87,8 @@ def coletas(itemAzul, itemAmarelo, itemRoxo):
     display.blit(pontos_amarela, pontos_amarela_rect)
     display.blit(pontos_roxa, pontos_roxa_rect)
     display.blit(total, total_rect)
-    '''display.blit(total_pontos, total_pontos_rect)'''
     
-
+#Tela de Game Over
 def game_over(v1, v2, v3):
     while True:
         display.blit(BG, (0, 0))
@@ -113,8 +113,8 @@ def game_over(v1, v2, v3):
                 
         pygame.display.update()
 
-
-def play(): # transforma o jogo principal numa função que será executada no menu principal
+# transforma o jogo principal numa função que será executada no menu principal
+def play(): 
     timer, itemAzul, itemAmarelo, itemRoxo = 0, 0, 0, 0
     gameloop = True
     clock = pygame.time.Clock()
@@ -123,6 +123,7 @@ def play(): # transforma o jogo principal numa função que será executada no m
     mostrar_amarelo = f'Amarelo:{itemAmarelo}'
     mostrar_roxo = f'Roxo:{itemRoxo}'
 
+    #Loop principal do jogo
     while gameloop:
         clock.tick(60) #Limitando a 60 FPS
         mostrar_azul = f'Azul: {itemAzul}'
@@ -142,6 +143,8 @@ def play(): # transforma o jogo principal numa função que será executada no m
             if event.type == pygame.QUIT:
                 gameloop = False
             elif event.type == pygame.KEYDOWN:
+
+                #Comandos para os tiros
                 if event.key == pygame.K_RIGHT:
                     som_tiro.play()
                     newBullet = BulletRight(bulletGroup)
@@ -163,9 +166,11 @@ def play(): # transforma o jogo principal numa função que será executada no m
                     newBullet.rect.center = player.rect.center
 
 
-            
+        #Chama função de desenho    
         draw()
-        drawGroup.update() #Aplica movimentação 
+
+        #Aplica movimentação dos grupos do objeto
+        drawGroup.update() 
         enemyGroup.update()
         bulletGroup.update()
 
@@ -178,9 +183,11 @@ def play(): # transforma o jogo principal numa função que será executada no m
             newEnemyDown = EnemyToDown(enemyGroup)
             newEnemyRight = EnemyToRight(enemyGroup)
         
+        #Colisões
         collide = pygame.sprite.spritecollide(player, enemyGroup, False)
         killEnemy = pygame.sprite.groupcollide(bulletGroup, enemyGroup, True, True)
 
+        #Drop de itens
         if killEnemy:
             som_colisao_inimigo.play()
             if random.random() < 0.2:
@@ -189,11 +196,13 @@ def play(): # transforma o jogo principal numa função que será executada no m
                 newItem = Item(itemYGroup).image = pygame.image.load('assets/yellowItem.png')
             elif random.random() < 0.01:
                 newItem = Item(itemPGroup).image = pygame.image.load('assets/purpleItem.png')
-        
+
+        #Coleta dos itens
         collectB = pygame.sprite.spritecollide(player, itemBGroup, True)
         collectY = pygame.sprite.spritecollide(player, itemYGroup, True)
         collectP = pygame.sprite.spritecollide(player, itemPGroup, True)
 
+        #Registro das coletas
         if collectB:
             itemAzul += 1
             print(f'Azul: {itemAzul}')
@@ -218,7 +227,8 @@ def play(): # transforma o jogo principal numa função que será executada no m
 
         pygame.display.update()
 
-def main_menu(): # menu principal. Tem apenas o botão de jogar
+# menu principal. Tem apenas o botão de jogar
+def main_menu(): 
     while True:
 
         # mostrar a tela do menu principal e quantos pontos valhem cada item
@@ -249,7 +259,7 @@ def main_menu(): # menu principal. Tem apenas o botão de jogar
                              text_input="JOGAR", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
 
         
-
+        #Renderiza os elementos do menu
         display.blit(menu_text, menu_rect)
         
         display.blit(i_azul, (550, 500))
@@ -265,14 +275,16 @@ def main_menu(): # menu principal. Tem apenas o botão de jogar
         for button in [play_button]:
             button.changeColor(menu_mouse_pos)
             button.update(display)
-
+            
+        #Sai do jogo
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if play_button.checkForInput(menu_mouse_pos):
+            #Inicia o jogo
+            if event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.KEYDOWN:
+                if play_button.checkForInput(menu_mouse_pos) or event.key == pygame.K_SPACE:
                     play()
 
         pygame.display.update()
