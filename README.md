@@ -16,7 +16,7 @@
  - Pygame
  - Random
  - dis
- - sis
+ - sys
 
 ## Divisão do trabalho:
  - Movimentação, Player, Colisão, Projétil: Lucas G.
