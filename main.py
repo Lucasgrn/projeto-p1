@@ -190,11 +190,12 @@ def play():
         #Drop de itens
         if killEnemy:
             som_colisao_inimigo.play()
-            if random.random() < 0.2:
+            probabilidade=random.random()
+            if probabilidade < 0.2:
                 newItem = Item(itemBGroup).image = pygame.image.load('assets/blueItem.png')
-            elif random.random() < 0.1:    
+            elif probabilidade < 0.1:    
                 newItem = Item(itemYGroup).image = pygame.image.load('assets/yellowItem.png')
-            elif random.random() < 0.01:
+            elif probabilidade < 0.01:
                 newItem = Item(itemPGroup).image = pygame.image.load('assets/purpleItem.png')
 
         #Coleta dos itens
