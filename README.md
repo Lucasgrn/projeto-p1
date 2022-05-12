@@ -12,6 +12,17 @@
 - Chamamos esses objetos no arquivo principal
 - Definirmos a lógica do jogo no arquivo principal
 - Arquivos de mídia colocamos em uma pasta dedicadas a eles
+
+## Instruções de como rodar o codigo : 
+   - É preciso instalar o python
+   - É necessário fazer a instalação do pygame
+   - Depois é preciso clonar o repositorio pelo link do github 
+   - Para finalmente rodar o código é só executar o main.py
+   
+## Instruções de como jogar : 
+   - As teclas : W,A,S,D movem o personagem que é o quadrado branco.
+   - As setas do teclado movem a direção dos tiros que o personagem solta.
+
 ## Ferramentas utilizadas:
  - Pygame
  - Random
